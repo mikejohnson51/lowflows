@@ -1,0 +1,73 @@
+#' USGS NWIS Metadata
+#'
+#' Dataset containing meta information for the nwis network
+#'
+#' @docType data
+#'
+#' @format a \code{dataframe} instance, 1 row per station with columns:
+#' \itemize{
+#' \item 'siteID':    A \code{character}  NWIS unique identifier
+#' \item 'COMID':     A \code{numeric}    NHD unique indentifier (common identifier)
+#' \item 'lat':       A \code{numeric}    Station latitude, decimil degree
+#' \item 'lon':       A \code{numeric}    Station longitude, decimil degree
+#' \item 'name':      A \code{character}  Station name
+#' \item 'huc8':      A \code{character}  HUC8 unit station resides in
+#' \item 'tzOffset':  A \code{character}  Timezone offset from UTC
+#' \item 'tz':        A \code{character}  Timezone
+#' \item 'state':     A \code{character}  State where station is located (2 character abbriviation)
+#' \item 'county':    A \code{character}  County where station is located
+#' \item 'geoid':     A \code{character}  Joing state and county FIP code
+#' \item 'startDate': A \code{Date}       Date of first recorded value
+#' \item 'endDate':   A \code{Date}       Date of last recorded value (subset on 2018-10-08 so this refers to 'present')
+#' \item 'avg.flow':  A \code{numeric}    Mean flow over record
+#' \item 'sd.flow':   A \code{numeric}    Standard devaition of flow over record
+#' \item 'min.flow':  A \code{numeric}    Minimum flow over record
+#' \item 'max.flow':  A \code{numeric}    Maximum flow over record
+#' \item 'percent0':  A \code{numeric}    Percent of observations with 0 flow
+#' \item 'n.days':    A \code{numeric}    Length of the record (days)
+#' }
+#'
+#' @examples
+#' \dontrun{
+#'  lowflows::usgs_meta
+#' }
+#'
+
+"usgs_meta"
+
+#' USGS NWIS Filtered Metadata
+#'
+#' Dataset containing meta information for the nwis station that report data for 1993-01-01 onward
+#'
+#' @docType data
+#'
+#' @format a \code{dataframe} instance, 1 row per station with columns:
+#' \itemize{
+#' \item 'siteID':    A \code{character}  NWIS unique identifier
+#' \item 'COMID':     A \code{numeric}    NHD unique indentifier (common identifier)
+#' \item 'lat':       A \code{numeric}    Station latitude, decimil degree
+#' \item 'lon':       A \code{numeric}    Station longitude, decimil degree
+#' \item 'name':      A \code{character}  Station name
+#' \item 'huc8':      A \code{character}  HUC8 unit station resides in
+#' \item 'tzOffset':  A \code{character}  Timezone offset from UTC
+#' \item 'tz':        A \code{character}  Timezone
+#' \item 'state':     A \code{character}  State where station is located (2 character abbriviation)
+#' \item 'county':    A \code{character}  County where station is located
+#' \item 'geoid':     A \code{character}  Joing state and county FIP code
+#' \item 'startDate': A \code{Date}       Date of first recorded value
+#' \item 'endDate':   A \code{Date}       Date of last recorded value (subset on 2018-10-08 so this refers to 'present')
+#' \item 'avg.flow':  A \code{numeric}    Mean flow over record
+#' \item 'sd.flow':   A \code{numeric}    Standard devaition of flow over record
+#' \item 'min.flow':  A \code{numeric}    Minimum flow over record
+#' \item 'max.flow':  A \code{numeric}    Maximum flow over record
+#' \item 'percent0':  A \code{numeric}    Percent of observations with 0 flow
+#' \item 'n.days':    A \code{numeric}    Length of the record (days)
+#' }
+#'
+#' @examples
+#' \dontrun{
+#'  lowflows::usgs_filter
+#' }
+#'
+
+"usgs_filter"

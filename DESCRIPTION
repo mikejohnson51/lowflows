@@ -1,0 +1,23 @@
+Package: lowflows
+Type: Package
+Title: lowflows
+Description: A set of functions for NWM analysis. Working with Helen Chen.
+Version: 0.0.1
+Authors@R: person("Mike", "Johnson", role = c("aut", "cre"), email = "jmj00@ucsb.edu")
+Maintainer: Mike Johnson <jmj00@ucsb.edu>
+BugReports: https://github.com/mikejohnson51/lowflows/issues
+Depends:
+    R(>= 3.3.0)
+Imports:
+    dataRetrieval,
+    leaflet,
+    magrittr,
+    ncdf4,
+    sp
+Remotes: mikejohnson51/AOI,
+	       mikejohnson51/HydroData
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.0
+
