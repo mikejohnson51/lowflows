@@ -4,7 +4,6 @@
 #' @param na.rm remove NAs?
 #' @return a vector 
 #' @export
-#' @examples
 #' @author Mike Johnson
 #' 
 dailyAvg <- function (vec, every, na.rm = FALSE) {

@@ -6,8 +6,6 @@
 #' @param filter if filter is TRUE use filtered USGS meta data
 #' @return a data.frame
 #' @export
-#'
-#' @examples
 #' @author Mike Johnson
 
 grabData = function(stationID = NULL, retro.path = NULL, units = 'cms', filter = TRUE){
