@@ -42,9 +42,9 @@ fdc_plot = function(df, col_name = NULL, prob = NULL) {
   
   fit = fdc_curve(df, col_name = col_name)
   
-  plot(c(df[,paste0(col_name,".fdc")], 1.2), c(df[,col_name],NA), log='y', 
+  plot(c(df[,paste0(col_name,".fdc")], 1.2), c(df[,col_name], NA), log='y', 
        xlab="Probability of Exceedance", ylab=c("Flow (log scale)"), 
-       main=c(paste0("Flow Duration Curve: ", " n = ", sum(!is.na(df[,col_name])))), bty = 'l', pch = 16, cex = .6)
+       main=c(paste0("Flow Duration Curve: ", col_name, " n = ", sum(!is.na(df[,col_name])))), bty = 'l', pch = 16, cex = .6)
   
   curve(fit(x), col='red', lwd=2, lty=1, add=T)
   

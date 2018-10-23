@@ -19,7 +19,6 @@ grabData = function(stationID = NULL, retro.path = NULL, units = 'cms', filter =
     nc = ncdf4::nc_open(retro.path, suppress_dimvals = TRUE)
     
     if(filter){ meta = lowflows::usgs_filter } else { meta = lowflows::usgs_meta }
-  
     
     nwis.index = which(meta$siteID == stationID)
     
@@ -32,7 +31,18 @@ grabData = function(stationID = NULL, retro.path = NULL, units = 'cms', filter =
     df = data.frame(stationID = rep(stationID, 9131),
                     Date      = seq.Date(as.Date('1993-01-01'), as.Date("2017-12-31"),1),
                     comid     = rep(meta$COMID[nwis.index], 9131),
-                    nwm       = dailyAvg(nwm, every = 24))
+                    nwm       = dailyAvg(nwm, every = 24),
+                    season    = rep(NA, 9131))
+    
+    df$month = as.numeric(format(df$Date, "%m"))
+
+      for(i in 1:NROW(df)){
+        if(any(df$month[i] ==  c(1,2,12))){ df$season[i] = 'winter'}
+        if(any(df$month[i] ==  c(3:5))){    df$season[i] = 'spring'}
+        if(any(df$month[i] ==  c(6:8))){    df$season[i] = 'summer'}
+        if(any(df$month[i] ==  c(9:11))){   df$season[i] = 'fall'}
+      }
+
     
     if(units == 'cfs') { df$nwm = df$nwm *convert}
     
