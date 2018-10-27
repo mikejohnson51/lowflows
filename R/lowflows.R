@@ -11,5 +11,7 @@
 #' @importFrom ncdf4 nc_open nc_close ncvar_get
 #' @importFrom dataRetrieval readNWISdv 
 #' @importFrom sp SpatialPointsDataFrame CRS
+#' @import hydroGOF 
 
 NULL
+

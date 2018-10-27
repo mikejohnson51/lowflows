@@ -26,6 +26,8 @@ grabData = function(stationID = NULL, retro.path = NULL, units = 'cms', filter =
     
     index = which(findex == meta$COMID[nwis.index])
     
+    if(length(index) > 0){
+    
     nwm = ncdf4::ncvar_get(nc, varid = 'streamflow',  start= c(index,1), count = c(1, nc$dim$time$len))
     
     df = data.frame(stationID = rep(stationID, 9131),
@@ -44,17 +46,22 @@ grabData = function(stationID = NULL, retro.path = NULL, units = 'cms', filter =
       }
 
     
-    if(units == 'cfs') { df$nwm = df$nwm *convert}
+    if(units == 'cfs') { df$nwm = df$nwm * convert}
     
     nwis = dataRetrieval::readNWISdv(stationID, parameterCd = '00060')
     
     tmp = nwis[nwis$Date >= as.Date('1993-01-01'),]
     tmp = tmp[tmp$Date <= as.Date('2017-12-31'),]
     
-    if(dim(tmp)[1] == 0) { stop("This station does not have observations between 1993-01-01 and 2017-12-31")}
-    
     min.date = min(tmp$Date)
     max.date = max(tmp$Date)
+    
+    complete = length(seq.Date(min.date, max.date, 1)) == NROW(tmp)
+    
+    if(complete){
+    
+    if(dim(tmp)[1] == 0) { message("This station does not have observations between 1993-01-01 and 2017-12-31")
+      return(NULL)}
     
     df = df[df$Date >= min.date,]
     df = df[df$Date <= max.date,]
@@ -65,6 +72,9 @@ grabData = function(stationID = NULL, retro.path = NULL, units = 'cms', filter =
     
     ncdf4::nc_close(nc)
     return(df)
-}
+    } else { message("Complete Timeseries not available")
+      return(NULL)}
+} else { message("Index not found") }
 
+}
 
